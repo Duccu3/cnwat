@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Web chill chill</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:," />
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="avatar">🦍</div>
+      <div class="brand-text">
+        <h1>Đặng Hoàng Đức</h1>
+        <p>Mã SV: AT190312</p>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <h2>Labs</h2>
+      <ul id="assignmentsList">
+        <!-- JS sẽ render các bài ở đây -->
+      </ul>
+    </nav>
+
+    <footer class="sidebar-footer">
+      <a target="_blank" href="https://www.facebook.com/duc.cu.3/">Facebook</a>
+      <a target="_blank" href="https://github.com/Duccu3">GitHub</a>
+    </footer>
+  </aside>
+
+  <div class="page">
+    <header class="topbar">
+      <button id="toggleSidebar" aria-label="Toggle sidebar">☰</button>
+      <span class="topbar-title">Web chill chill</span>
+    </header>
+
+    <section class="hero">
+      <video autoplay muted loop playsinline class="bg-video">
+        <source src="assets/Lazy River Abi Toads Live Wallpaper.mp4" type="video/mp4" />
+        Trình duyệt của bạn không hỗ trợ video nền.
+      </video>
+      
+      <div class="hero-overlay">
+        <h2>Duccu</h2>
+        <p>Công nghệ web an toàn KMA.</p>
+        <a class="btn" id="showIntroBtn" href="#gioi-thieu">Xem giới thiệu</a>
+      </div>
+    </section>
+
+    <main class="content">
+      <section id="gioi-thieu" class="card hidden">
+        <h3>Giới thiệu</h3>
+        <p>
+          Họ tên: <strong>Đặng Hoàng Đức</strong><br/>
+          Mã SV: <strong>AT190312</strong><br/>
+          Lớp: <strong>AT19C</strong>
+        </p>
+        <p>
+          
+        </p>
+      </section>
+
+      <section class="card hidden" id="howto">
+        <h3>How to use </h3>
+        <ol>
+          <li>Chọn bài trong thanh bên trái để mở.</li>
+          <li>8</li>
+          <li>6</li>
+        </ol>
+      </section>
+    </main>
+
+    <footer class="page-footer">
+      © <span id="year"></span> Duccu321 - this shii is so gud
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
