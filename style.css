@@ -230,6 +230,14 @@
     transition: all 0.3s ease;
   }
   
+  /* Card giới thiệu được mở rộng */
+  #gioi-thieu {
+    grid-column: 1 / span 10;
+    justify-self: start;
+    margin-left:-430px;
+    max-width: 1000px;
+  }
+  
   .card:hover {
     transform: translateY(-4px);
     box-shadow: 0 20px 50px rgba(0,0,0,.6);
@@ -258,14 +266,15 @@
   
   /* Footer */
   .page-footer{
-    padding:32px; 
+    padding:20px; 
     color:var(--muted); 
     border-top:1px solid rgba(255,255,255,.06);
-    text-align: center;
+    text-align: left;
     font-size: 14px;
     font-weight: 500;
     max-width: 1200px;
     margin: 0 auto;
+    
   }
   
   /* Responsive */
@@ -284,6 +293,17 @@
     .hero h2{ font-size: clamp(24px, 6vw, 32px); }
     .content{ padding: 16px; gap: 16px; }
     .card{ padding: 20px; }
+    
+    /* Card giới thiệu full width trên mobile */
+    #gioi-thieu {
+      grid-column: span 12;
+      margin-left: 0;
+    }
+    
+    .page-footer {
+      margin-left: 0;
+      text-align: center;
+    }
   }
   
   .hidden {
@@ -300,4 +320,5 @@
     from { opacity: 0; transform: translateY(6px); }
     to   { opacity: 1; transform: none; }
   }
+  
   
