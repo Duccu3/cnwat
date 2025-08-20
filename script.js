@@ -39,37 +39,28 @@ document.addEventListener('DOMContentLoaded', function () {
       sidebar.classList.toggle("open");
     });
   }
+});
 
-  // ----- Hiển thị Giới thiệu + How to khi bấm nút -----
-  const showBtn = document.getElementById('showIntroBtn');
-  const intro   = document.getElementById('gioi-thieu');
-  const howto   = document.getElementById('howto');
 
-  if (showBtn && intro && howto) {
+// ----- Hiển thị Giới thiệu + How to khi bấm nút -----
+// Chỉ toggle tại chỗ nếu href là anchor (#...). Nếu href là "about/" thì để điều hướng bình thường.
+const showBtn = document.getElementById('showIntroBtn');
+const intro   = document.getElementById('gioi-thieu');
+const howto   = document.getElementById('howto');
+
+if (showBtn) {
+  const href = showBtn.getAttribute('href') || '';
+  if (href.startsWith('#') && intro && howto) {
     showBtn.addEventListener('click', (e) => {
       e.preventDefault();
-    
       const toToggle = [intro, howto];
-      const isHidden = intro.classList.contains('hidden'); // đang ẩn?
-    
+      const isHidden = intro.classList.contains('hidden');
       if (isHidden) {
-        // nếu đang ẩn -> hiện
-        toToggle.forEach(sec => {
-          sec.classList.remove('hidden');
-          sec.classList.add('revealed');
-        });
+        toToggle.forEach(sec => { sec.classList.remove('hidden'); sec.classList.add('revealed'); });
         intro.scrollIntoView({ behavior: 'smooth', block: 'start' });
       } else {
-        // nếu đang hiện -> ẩn
-        toToggle.forEach(sec => {
-          sec.classList.add('hidden');
-          sec.classList.remove('revealed');
-        });
+        toToggle.forEach(sec => { sec.classList.add('hidden'); sec.classList.remove('revealed'); });
       }
     });
-    
-  } else {
-    // Debug giúp bạn nếu thiếu ID nào đó
-    console.log('DEBUG ids:', { showBtn, intro, howto });
   }
-});
+}
