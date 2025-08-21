@@ -10,8 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
   // ----- DOM refs -----
   const listEl   = document.getElementById("assignmentsList");
   const yearEl   = document.getElementById("year");
-  const sidebar  = document.getElementById("sidebar");
-  const toggleBtn= document.getElementById("toggleSidebar");
 
   // ----- Footer năm -----
   if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -32,35 +30,5 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   renderAssignments();
-
-  // ----- Mở/đóng sidebar -----
-  if (toggleBtn && sidebar) {
-    toggleBtn.addEventListener("click", () => {
-      sidebar.classList.toggle("open");
-    });
-  }
+  
 });
-
-
-// ----- Hiển thị Giới thiệu + How to khi bấm nút -----
-// Chỉ toggle tại chỗ nếu href là anchor (#...). Nếu href là "about/" thì để điều hướng bình thường.
-const showBtn = document.getElementById('showIntroBtn');
-const intro   = document.getElementById('gioi-thieu');
-const howto   = document.getElementById('howto');
-
-if (showBtn) {
-  const href = showBtn.getAttribute('href') || '';
-  if (href.startsWith('#') && intro && howto) {
-    showBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const toToggle = [intro, howto];
-      const isHidden = intro.classList.contains('hidden');
-      if (isHidden) {
-        toToggle.forEach(sec => { sec.classList.remove('hidden'); sec.classList.add('revealed'); });
-        intro.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      } else {
-        toToggle.forEach(sec => { sec.classList.add('hidden'); sec.classList.remove('revealed'); });
-      }
-    });
-  }
-}
