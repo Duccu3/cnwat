@@ -60,4 +60,4 @@ Một trang tĩnh để tập trung **tất cả các bài lab/môn học** củ
 - Thêm `aria-expanded` cho nút/biểu tượng mở menu (nếu có).
 - Hạn chế kích thước video/ảnh; dùng `.webp` cho ảnh poster.
 
-**Tác giả:** Đặng Hoàng Đức — `hdlshb@gmail.com`
+**Tác giả:** Đặng Hoàng Đức + some help from AI — `hdlshb@gmail.com`
