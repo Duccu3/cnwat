@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bài 1 — Cấu hình ứng dụng web</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <style>
+        :root{
+            --bg:#0b0f14; 
+            --panel:#0f1520; 
+            --text:#f0f0f0;
+            --muted:rgba(255,255,255,.8);
+            --accent:#5b9cff; 
+            --accent2:#7af0b6;
+            --radius:16px;
+            --shadow:0 10px 30px rgba(0,0,0,.4);
+        }
+        *{ box-sizing:border-box; }
+        html, body{ height:100%; }
+        body{
+            margin:0; background:var(--bg); color:var(--text);
+            font: 16px/1.7 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        }
+        a{ color: var(--accent); text-decoration: none; }
+        a:hover{ text-decoration: underline; }
+
+        /* Sticky top bar — identical to About */
+        .topbar{display:flex;gap:16px;align-items:center;justify-content:center;padding:20px 16px;background:#0c131d;position:sticky;top:0;z-index:10;box-shadow:var(--shadow);min-height:80px}
+        .topbar .back{position:absolute;left:16px;text-decoration:none;display:inline-flex;align-items:center;padding:12px 20px;border-radius:12px;color:#0a0a0a;background:linear-gradient(135deg, var(--accent), var(--accent2));box-shadow:var(--shadow);font-weight:600;font-size:16px;letter-spacing:-0.01em;transition:all 0.2s ease;border:none;cursor:pointer}
+        .topbar .back:hover{transform:translateY(-2px);box-shadow:0 15px 40px rgba(0,0,0,.5)}
+        .topbar .back:active{transform:translateY(0)}
+
+        /* Article layout */
+        .container{ max-width: 1100px; margin:0 auto; padding: 28px 20px 80px; }
+        .article h1{ font-size: clamp(28px, 4.6vw, 42px); margin: 6px 0 18px; font-weight: 800; letter-spacing: -0.03em; }
+        .article h1{ background: linear-gradient(135deg, #ffffff 0%, #dffbff 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .article h2{ font-size: 22px; margin: 26px 0 10px; font-weight: 700; }
+        .article h3{ font-size: 18px; margin: 22px 0 10px; font-weight: 700; color: #e8faff; }
+        .article p{ margin: 0 0 12px 0; color: var(--muted); }
+        .article ul{ margin: 8px 0 16px 18px; color: var(--muted); }
+        hr{ border: none; border-top: 1px solid rgba(255,255,255,.08); margin: 28px 0; }
+
+        /* Image card */
+        figure{ margin: 16px 0; }
+        .image-card{ background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+            border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); }
+        .image-card img{ display:block; width:100%; height:auto; border-radius: 12px; }
+        figcaption{ color: var(--muted); font-size: 14px; margin-top: 8px; text-align: center; }
+
+        /* Code */
+        pre[class*="language-"]{ background: #0b1220; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; box-shadow: var(--shadow); }
+        code, pre{ font-family: "SFMono-Regular", Menlo, Consolas, monospace; }
+        .kbd{ display:inline-block; padding:2px 6px; border:1px solid rgba(255,255,255,.15); border-radius:6px; background:rgba(255,255,255,.06); }
+
+        /* Panel style to match About */
+        .panel{background:var(--panel);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+
+        /* Footer */
+        .page-footer{ color: var(--muted); text-align:center; border-top: 1px solid rgba(255,255,255,.08); padding: 18px 0; margin-top: 40px; }
+
+        @media (max-width: 800px){
+          .topbar .back{position:relative;left:auto;margin-bottom:12px;font-size:14px;padding:10px 16px}
+          .topbar{flex-direction:column;text-align:center}
+        }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <a class="back" href="../../index.html">Trang chủ</a>
+        <h1>Bài 1</h1>
+    </header>
+
+    <main class="container">
+        <article class="article panel">
+            <h1>Bài 1: Cấu hình ứng dụng web</h1>
+
+            <h2>Cài đặt XAMPP cho Windows</h2>
+            <h3>Giao diện hoạt động của XAMPP</h3>
+            <figure class="image-card">
+                <img src="image.png" alt="Giao diện XAMPP đang chạy">
+            </figure>
+
+            <h3>Truy cập Localhost</h3>
+            <figure class="image-card">
+                <img src="image%201.png" alt="Truy cập localhost">
+            </figure>
+
+            <h2>Tạo CSDL và bảng</h2>
+            <p>Mở <span class="kbd">http://localhost/phpmyadmin</span> → tạo database <strong>users</strong> với collation <strong>utf8_unicode_ci</strong>, sau đó tạo 2 bảng như dưới.</p>
+            <pre class="language-sql"><code class="language-sql">-- Bảng users
+CREATE TABLE `users` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(50) COLLATE latin1_swedish_ci NOT NULL,
+  `mail` varchar(50) COLLATE latin1_swedish_ci NOT NULL,
+  `salt` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+-- Bảng ip
+CREATE TABLE `ip` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `ip` varchar(50) COLLATE latin1_swedish_ci NOT NULL,
+  `count_login` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+            </code></pre>
+            <figure class="image-card"><img src="image%202.png" alt="Tạo database"></figure>
+            <figure class="image-card"><img src="image%203.png" alt="Tạo bảng"></figure>
+            <figure class="image-card"><img src="image%204.png" alt="Cấu trúc bảng"></figure>
+
+            <h2>Chuẩn bị tên miền nội bộ (hosts)</h2>
+            <p>Thêm bản ghi hosts để truy cập 3 site theo yêu cầu.</p>
+            <ul>
+                <li>Mở Notepad <strong>Run as Administrator</strong></li>
+                <li>Mở tệp: <span class="kbd">C:\Windows\System32\drivers\etc\hosts</span></li>
+                <li>Thêm các dòng sau:</li>
+            </ul>
+            <pre class="language-none"><code class="language-none">127.0.0.1   www.abc.com.vn
+127.0.0.1   bulletin.abc.com.vn
+127.0.0.1   hrm.abc.com.vn
+            </code></pre>
+            <figure class="image-card"><img src="image%205.png" alt="Sửa file hosts"></figure>
+
+            <h2>Tạo 3 VirtualHost cho 3 website</h2>
+            <p>Các tệp cấu hình Apache nằm trong <span class="kbd">C:\xampp\apache\conf\</span>. Khai báo vhosts tại <span class="kbd">C:\xampp\apache\conf\extra\httpd-vhosts.conf</span>.</p>
+
+            <h3>Bật include vhosts</h3>
+            <p>Mở <span class="kbd">C:\xampp\apache\conf\httpd.conf</span> và đảm bảo dòng sau không bị comment:</p>
+            <pre class="language-apacheconf"><code class="language-apacheconf">Include conf/extra/httpd-vhosts.conf
+            </code></pre>
+            <figure class="image-card"><img src="image%206.png" alt="Bật include vhosts"></figure>
+
+            <h3>Tạo thư mục mã nguồn</h3>
+            <ul>
+                <li><span class="kbd">C:\xampp\htdocs\abc\</span></li>
+                <li><span class="kbd">C:\xampp\htdocs\bulletin\</span></li>
+                <li><span class="kbd">C:\xampp\htdocs\hrm\</span></li>
+            </ul>
+
+            <h3>Khai báo VirtualHost</h3>
+            <pre class="language-apacheconf"><code class="language-apacheconf"># www.abc.com.vn
+&lt;VirtualHost *:80&gt;
+    ServerName www.abc.com.vn
+    DocumentRoot "C:/xampp/htdocs/abc"
+    &lt;Directory "C:/xampp/htdocs/abc"&gt;
+        AllowOverride All
+        Require all granted
+    &lt;/Directory&gt;
+    ErrorLog "logs/abc-error.log"
+    CustomLog "logs/abc-access.log" common
+&lt;/VirtualHost&gt;
+
+# bulletin.abc.com.vn
+&lt;VirtualHost *:80&gt;
+    ServerName bulletin.abc.com.vn
+    DocumentRoot "C:/xampp/htdocs/bulletin"
+    &lt;Directory "C:/xampp/htdocs/bulletin"&gt;
+        AllowOverride All
+        Require all granted
+    &lt;/Directory&gt;
+    ErrorLog "logs/bulletin-error.log"
+    CustomLog "logs/bulletin-access.log" common
+&lt;/VirtualHost&gt;
+
+# hrm.abc.com.vn
+&lt;VirtualHost *:80&gt;
+    ServerName hrm.abc.com.vn
+    DocumentRoot "C:/xampp/htdocs/hrm"
+    &lt;Directory "C:/xampp/htdocs/hrm"&gt;
+        AllowOverride All
+        Require all granted
+    &lt;/Directory&gt;
+    ErrorLog "logs/hrm-error.log"
+    CustomLog "logs/hrm-access.log" common
+&lt;/VirtualHost&gt;
+            </code></pre>
+            <figure class="image-card"><img src="image%207.png" alt="Khai báo vhosts"></figure>
+
+            <h2>Test thử 3 Website</h2>
+            <figure class="image-card"><img src="image%208.png" alt="Test abc"></figure>
+            <figure class="image-card"><img src="image%209.png" alt="Test bulletin"></figure>
+            <figure class="image-card"><img src="image%2010.png" alt="Test hrm"></figure>
+        </article>
+        <footer class="page-footer">© <span id="year"></span> <strong>Duccu3</strong>. All rights reserved.</footer>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    <script>/* prevent focus outline jump in some browsers */</script>
+</body>
+</html>
+ 

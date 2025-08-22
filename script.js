@@ -2,7 +2,7 @@ console.log('script loaded');
 document.addEventListener('DOMContentLoaded', function () {
   // ----- Dữ liệu bài tập -----
   const ASSIGNMENTS = [
-    { id: "01", title: "Bài 01 — Cấu hình ứng dụng Web", path: "assignments/01-gioi-thieu/" },
+    { id: "01", title: "Bài 01_Cấu hình ứng dụng Web", path: "assignments/01_bai1/" },
     // { id: "02", title: "Bài 02 — CSS", path: "assignments/02-css/" },
     // { id: "03", title: "Bài 03 — JS", path: "assignments/03-js/" },
   ];
